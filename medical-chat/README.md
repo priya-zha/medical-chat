@@ -1,54 +1,85 @@
-# 🏥 Medical Report Chatbot
+# 🏥 Medical Chat — AI-Powered Medical Report Assistant
 
-A RAG-based conversational AI that reads your medical PDF and answers questions in plain English — explaining terms AND what your specific values mean for your body.
+> Upload your medical PDF and have a real conversation about it — in plain English.
+
+Medical Chat is a **RAG-based conversational AI personal assistant** built with LangGraph, LangChain, ChromaDB, and Claude (Anthropic). It reads your medical reports, explains every term, interprets your specific lab values, and gives you personalized suggestions — including diet, lifestyle, and follow-up questions to ask your doctor.
 
 ---
 
-## 🚀 Setup (one time only)
+## ✨ What It Does
 
-### Step 1 — Extract the zip
-Unzip `medical-chat.zip` anywhere on your machine.
+- 📄 **Upload any medical PDF** — lab reports, blood work, radiology summaries, discharge notes
+- 🔬 **Explains medical terminology** in plain language tailored to your report
+- 📊 **Interprets your specific values** — tells you what *your* hemoglobin, eGFR, or cholesterol actually means
+- 🥗 **Diet & lifestyle suggestions** based on your results
+- 💬 **Conversational Q&A** — ask follow-up questions naturally, just like talking to a doctor
+- 🧠 Powered by **Claude (Anthropic)** + **LangGraph agentic pipeline** + **ChromaDB vector store**
 
-```bash
-cd medical-chat
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| LLM | Claude (Anthropic API) |
+| Orchestration | LangGraph + LangChain |
+| Vector Store | ChromaDB |
+| PDF Parsing | pdfplumber |
+| Embeddings | sentence-transformers |
+| UI | Streamlit |
+
+---
+
+## 🚀 Setup & Run (Windows)
+
+### Step 1 — Navigate to the project folder
+
+```
+cd C:\Users\pj351\Desktop\medical-chat
 ```
 
-### Step 2 — Run the setup script
-```bash
-bash setup.sh
-```
-This creates a virtual environment and installs all packages automatically.
+### Step 2 — Create and activate a virtual environment
 
-### Step 3 — Set your Anthropic API key
 ```bash
-export ANTHROPIC_API_KEY=your_key_here
+python -m venv venv
+venv\Scripts\activate
 ```
 
-### Step 4 — Activate the virtual env
+### Step 3 — Install dependencies
+
 ```bash
-source venv/bin/activate
+pip install anthropic langchain langgraph langchain-anthropic langchain-community langchain-core pdfplumber chromadb streamlit sentence-transformers
+```
+
+### Step 4 — Set your Anthropic API key
+
+```bash
+set ANTHROPIC_API_KEY=your_key_here
 ```
 
 ### Step 5 — Run the app
+
 ```bash
 streamlit run app.py
 ```
 
-Your browser will open automatically at `http://localhost:8501`
+Your browser will open at `http://localhost:8501`
 
 ---
 
-## 💬 How to use
+## 💬 How to Use
 
 1. Upload your medical PDF from the **sidebar**
-2. Wait ~5 seconds for it to index
-3. Type any question in the chat box
+2. Wait a few seconds for it to be indexed
+3. Ask anything in the chat
 
 **Example questions:**
 - What does my hemoglobin level mean?
 - Is my blood pressure normal?
 - Explain what eGFR means for my kidneys
 - Should I be worried about my cholesterol?
+- What foods should I eat based on my report?
+- What follow-up tests should I ask my doctor about?
 
 ---
 
@@ -56,16 +87,20 @@ Your browser will open automatically at `http://localhost:8501`
 
 ```
 medical-chat/
-├── app.py            ← Streamlit UI
-├── graph.py          ← LangGraph orchestration
-├── nodes.py          ← Ingest, retrieve, generate logic
-├── vectorstore.py    ← ChromaDB setup
-├── requirements.txt  ← All dependencies
-├── setup.sh          ← One-click setup script
+├── app.py             ← Streamlit UI & chat interface
+├── graph.py           ← LangGraph agentic orchestration
+├── nodes.py           ← Ingest, retrieve, and generate logic
+├── vectorstore.py     ← ChromaDB vector store setup
+├── requirements.txt   ← All dependencies
 └── README.md
 ```
 
 ---
 
 ## ⚠️ Disclaimer
-This tool is for informational purposes only. Always consult a qualified doctor for medical decisions.
+
+This tool is for **informational purposes only**. It does not constitute medical advice. Always consult a qualified healthcare professional for any medical decisions.
+
+---
+
+*Built by [Priya Jha](https://github.com/priya-zha)*
