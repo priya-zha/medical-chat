@@ -1,4 +1,4 @@
-# 🏥 Medical Chat — AI-Powered Medical Report Assistant      - Link : https://your-personal-medical-assistant.streamlit.app/
+# 🏥 Medi Chat — AI-Powered Medical Report Assistant      - Link : https://your-personal-medical-assistant.streamlit.app/
 
 > Upload your medical PDF and have a real conversation about it — in plain English.
 
